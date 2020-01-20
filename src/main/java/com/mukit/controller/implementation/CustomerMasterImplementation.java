@@ -11,7 +11,7 @@ public class CustomerMasterImplementation implements CustomerMaster {
 	
 	
 	
-	public void addTopic(@RequestBody Topic topic) {
-		topicService.addTopic(topic);
-	}
+//	public void addTopic(@RequestBody Topic topic) {
+//		topicService.addTopic(topic);
+//	}
 }
