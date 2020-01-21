@@ -1,5 +1,9 @@
 package com.mukit.repository;
 
-public interface CustomerMasterRepository{
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.mukit.model.view.CustomerMasterView;
+
+public interface CustomerMasterRepository extends JpaRepository<CustomerMasterView, Integer>{
 
 }
