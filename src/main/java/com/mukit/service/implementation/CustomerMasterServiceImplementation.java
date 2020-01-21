@@ -13,13 +13,17 @@ public class CustomerMasterServiceImplementation {
 
 	@Autowired
 	private CustomerMasterRepository customerMasterRepository;
-	
 
-	public void save(CustomerMasterView customerMasterView) {
+	public boolean save(CustomerMasterView customerMasterView) {
 		CustomerMasterData customerMasterData = new CustomerMasterData();
-		Converter.viewToDataModelConverter(customerMasterView, customerMasterData);
-		customerMasterRepository.save(customerMasterData);
-		
+		try {
+			Converter.viewToDataModelConverter(customerMasterView, customerMasterData);
+			customerMasterRepository.save(customerMasterData);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+
 	}
 
 }

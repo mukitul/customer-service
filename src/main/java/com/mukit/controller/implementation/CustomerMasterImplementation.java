@@ -24,13 +24,14 @@ public class CustomerMasterImplementation implements CustomerMaster {
 	@PostMapping
 	public ResponseEntity<?> addCustomer(@RequestBody PostRequestEntity<CustomerMasterView> postRequestEntity) {
 
-		System.out.println("111111");
 		CustomerMasterView customerMasterView = new CustomerMasterView();
-		System.out.println("222222");
 		customerMasterView = (CustomerMasterView) postRequestEntity.data.attributes;
-		System.out.println("333333");
-		System.out.println(customerMasterView);
-		customerMasterServiceImplementation.save(customerMasterView);
+		boolean success = customerMasterServiceImplementation.save(customerMasterView);
+		if(success) {
+			System.out.println("SUCCESS!!!");
+			return new ResponseEntity<>(HttpStatus.CREATED);
+		}
+		System.out.println("Failed!!!");
 		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 
 	}
