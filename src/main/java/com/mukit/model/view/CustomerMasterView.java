@@ -31,7 +31,6 @@ public class CustomerMasterView {
 	}
 
 	public CustomerMasterView(Integer id, Integer customerId) {
-		super();
 		this.id = id;
 		this.customerId = customerId;
 	}
