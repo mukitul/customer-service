@@ -23,8 +23,9 @@ public class CustomerMasterData {
 	@Column(name = "amount")
 	private Double amount;
 	
+
 	@Column(name = "last_transaction_date")
-	private long lastTransactionDate;
+	private Long lastTransactionDate;
 	
 	public Integer getId() {
 		return id;
@@ -56,12 +57,12 @@ public class CustomerMasterData {
 	}
 
 
-	public long getLastTransactionDate() {
+	public Long getLastTransactionDate() {
 		return lastTransactionDate;
 	}
 
 
-	public void setLastTransactionDate(long lastTransactionDate) {
+	public void setLastTransactionDate(Long lastTransactionDate) {
 		this.lastTransactionDate = lastTransactionDate;
 	}
 
@@ -72,7 +73,7 @@ public class CustomerMasterData {
 
 
 	public CustomerMasterData(Integer id, @NotNull Integer customerId, @NotNull Double amount,
-			long lastTransactionDate) {
+			Long lastTransactionDate) {
 		this.id = id;
 		this.customerId = customerId;
 		this.amount = amount;

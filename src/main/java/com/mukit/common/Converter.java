@@ -8,6 +8,8 @@ public class Converter {
 	public static void viewToDataModelConverter(CustomerMasterView viewModel, CustomerMasterData dataModel) {
 		dataModel.setId(viewModel.getId());
 		dataModel.setCustomerId(viewModel.getCustomerId());
+		dataModel.setAmount(viewModel.getAmount());
+		dataModel.setLastTransactionDate(viewModel.getLastTransactionDate());
 	}
 
 }
