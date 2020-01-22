@@ -1,7 +1,5 @@
 package com.mukit.common;
 
-import java.util.List;
-
 import com.mukit.model.data.CustomerMasterData;
 import com.mukit.model.view.CustomerMasterView;
 
