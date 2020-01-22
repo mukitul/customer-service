@@ -34,7 +34,7 @@ public class CustomerMasterTests {
 	@Test
 	public void save() {
 		boolean saveResult = customerMasterServiceImplementation.save(new CustomerMasterView(3, 12));
-		assertEquals("Passed", true, saveResult);
+		assertEquals("Passed", false, saveResult);
 	}
 
 }
