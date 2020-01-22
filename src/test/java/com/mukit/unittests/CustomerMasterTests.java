@@ -30,7 +30,7 @@ public class CustomerMasterTests {
 
 	@Test
 	public void save() {
-		boolean saveResult = customerMasterServiceImplementation.save(new CustomerMasterView(3, 12));
+		boolean saveResult = customerMasterServiceImplementation.save(new CustomerMasterView(1, 1, 5000.0, 1212L));
 		System.out.println("TEST-------: "+saveResult);
 		assertEquals("Passed", false, saveResult);
 	}
