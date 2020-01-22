@@ -18,7 +18,6 @@ import com.mukit.common.response.get.GetRequestResponseBody;
 import com.mukit.common.response.get.GetRequestResponseEntityForList;
 import com.mukit.controller.interfaces.CustomerMaster;
 import com.mukit.model.view.CustomerMasterView;
-import com.mukit.repository.CustomerMasterRepository;
 import com.mukit.service.implementation.CustomerMasterServiceImplementation;
 
 @CrossOrigin
@@ -45,19 +44,19 @@ public class CustomerMasterImplementation implements CustomerMaster {
 
 	@GetMapping
 	public ResponseEntity<?> findAll() {
-		GetRequestResponseEntityForList responseObject = new GetRequestResponseEntityForList<CustomerMasterView, Integer>();
+		GetRequestResponseEntityForList<CustomerMasterView, Integer> responseObject = new GetRequestResponseEntityForList<CustomerMasterView, Integer>();
 		List<CustomerMasterView> customerMasterList = customerMasterServiceImplementation.findAll();
 		if (customerMasterList != null) {
-			List<GetRequestResponseBody> responseBody = new ArrayList<GetRequestResponseBody>();
+			List<GetRequestResponseBody<CustomerMasterView, Integer>> responseBody = new ArrayList<GetRequestResponseBody<CustomerMasterView, Integer>>();
 			for (int i = 0; i < customerMasterList.size(); i++) {
-				GetRequestResponseBody getRequestResponseBody = new GetRequestResponseBody<>();
+				GetRequestResponseBody<CustomerMasterView, Integer> getRequestResponseBody = new GetRequestResponseBody<CustomerMasterView, Integer>();
 				getRequestResponseBody.id=customerMasterList.get(i).getId();
 				getRequestResponseBody.type="customermaster";
 				getRequestResponseBody.attributes = customerMasterList.get(i);
 				responseBody.add(getRequestResponseBody);
 			}
 			responseObject.data = responseBody;
-			return new ResponseEntity<GetRequestResponseEntityForList>(responseObject, HttpStatus.OK);
+			return new ResponseEntity<GetRequestResponseEntityForList<CustomerMasterView, Integer>>(responseObject, HttpStatus.OK);
 		}
 		
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
