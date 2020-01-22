@@ -19,7 +19,13 @@ public class CustomerMasterData {
 	@Column(name = "customer_id")
 	private Integer customerId;
 
-
+	@NotNull
+	@Column(name = "amount")
+	private Double amount;
+	
+	@Column(name = "last_transaction_date")
+	private long lastTransactionDate;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -39,22 +45,49 @@ public class CustomerMasterData {
 		this.customerId = customerId;
 	}
 
+	
+	public Double getAmount() {
+		return amount;
+	}
+
+
+	public void setAmount(Double amount) {
+		this.amount = amount;
+	}
+
+
+	public long getLastTransactionDate() {
+		return lastTransactionDate;
+	}
+
+
+	public void setLastTransactionDate(long lastTransactionDate) {
+		this.lastTransactionDate = lastTransactionDate;
+	}
+
 
 	public CustomerMasterData() {
 		
 	}
-	
-	public CustomerMasterData(Integer id, @NotNull Integer customerId) {
-		super();
+
+
+	public CustomerMasterData(Integer id, @NotNull Integer customerId, @NotNull Double amount,
+			long lastTransactionDate) {
 		this.id = id;
 		this.customerId = customerId;
+		this.amount = amount;
+		this.lastTransactionDate = lastTransactionDate;
 	}
 
 
 	@Override
 	public String toString() {
-		return "CustomerMasterData [id=" + id + ", customerId=" + customerId + "]";
+		return "CustomerMasterData [id=" + id + ", customerId=" + customerId + ", amount=" + amount
+				+ ", lastTransactionDate=" + lastTransactionDate + "]";
 	}
+	
+	
+	
 	
 	
 	
