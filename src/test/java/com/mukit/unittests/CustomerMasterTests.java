@@ -2,16 +2,13 @@ package com.mukit.unittests;
 
 import static org.junit.Assert.assertEquals;
 
-import org.aspectj.lang.annotation.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.mukit.model.data.CustomerMasterData;
 import com.mukit.model.view.CustomerMasterView;
-import com.mukit.repository.CustomerMasterRepository;
 import com.mukit.service.implementation.CustomerMasterServiceImplementation;
 
 @RunWith(SpringRunner.class)
@@ -34,6 +31,7 @@ public class CustomerMasterTests {
 	@Test
 	public void save() {
 		boolean saveResult = customerMasterServiceImplementation.save(new CustomerMasterView(3, 12));
+		System.out.println("TEST-------: "+saveResult);
 		assertEquals("Passed", false, saveResult);
 	}
 
