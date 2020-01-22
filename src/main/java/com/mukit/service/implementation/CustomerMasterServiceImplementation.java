@@ -1,5 +1,8 @@
 package com.mukit.service.implementation;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +26,19 @@ public class CustomerMasterServiceImplementation {
 		} catch (Exception e) {
 			return false;
 		}
+
+	}
+
+	public List<CustomerMasterView> findAll() {
+		List<CustomerMasterView> customerMasterList = new ArrayList<CustomerMasterView>();
+		try {
+			List<CustomerMasterData> data = customerMasterRepository.findAll();
+			Converter.dataToViewModelConverterForList(customerMasterList, data);
+
+		} catch (Exception e) {
+
+		}
+		return customerMasterList;
 
 	}
 

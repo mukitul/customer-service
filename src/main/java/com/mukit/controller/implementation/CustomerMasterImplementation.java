@@ -1,17 +1,24 @@
 package com.mukit.controller.implementation;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mukit.common.request.post.PostRequestEntity;
+import com.mukit.common.response.get.GetRequestResponseBody;
+import com.mukit.common.response.get.GetRequestResponseEntityForList;
 import com.mukit.controller.interfaces.CustomerMaster;
 import com.mukit.model.view.CustomerMasterView;
+import com.mukit.repository.CustomerMasterRepository;
 import com.mukit.service.implementation.CustomerMasterServiceImplementation;
 
 @CrossOrigin
@@ -27,12 +34,32 @@ public class CustomerMasterImplementation implements CustomerMaster {
 		CustomerMasterView customerMasterView = new CustomerMasterView();
 		customerMasterView = (CustomerMasterView) postRequestEntity.data.attributes;
 		boolean success = customerMasterServiceImplementation.save(customerMasterView);
-		if(success) {
+		if (success) {
 			System.out.println("SUCCESS!!!");
 			return new ResponseEntity<>(HttpStatus.CREATED);
 		}
 		System.out.println("Failed!!!");
 		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 
+	}
+
+	@GetMapping
+	public ResponseEntity<?> findAll() {
+		GetRequestResponseEntityForList responseObject = new GetRequestResponseEntityForList<CustomerMasterView, Integer>();
+		List<CustomerMasterView> customerMasterList = customerMasterServiceImplementation.findAll();
+		if (customerMasterList != null) {
+			List<GetRequestResponseBody> responseBody = new ArrayList<GetRequestResponseBody>();
+			for (int i = 0; i < customerMasterList.size(); i++) {
+				GetRequestResponseBody getRequestResponseBody = new GetRequestResponseBody<>();
+				getRequestResponseBody.id=customerMasterList.get(i).getId();
+				getRequestResponseBody.type="customermaster";
+				getRequestResponseBody.attributes = customerMasterList.get(i);
+				responseBody.add(getRequestResponseBody);
+			}
+			responseObject.data = responseBody;
+			return new ResponseEntity<GetRequestResponseEntityForList>(responseObject, HttpStatus.OK);
+		}
+		
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 }
