@@ -2,7 +2,9 @@ package com.mukit.common;
 
 import java.util.List;
 
+import com.mukit.model.data.CustomerLedgerData;
 import com.mukit.model.data.CustomerMasterData;
+import com.mukit.model.view.CustomerLedgerView;
 import com.mukit.model.view.CustomerMasterView;
 
 public class Converter {
@@ -28,6 +30,17 @@ public class Converter {
 			dataToViewModelConverter(customerMasterView,dataModel.get(i));
 			viewModel.add(customerMasterView);
 		}
+	}
+
+	public static void viewToDataModelConverterForLedger(CustomerLedgerView viewModel,
+			CustomerLedgerData dataModel) {
+		dataModel.setTransactionId(viewModel.getTransactionId());
+		dataModel.setBatchId(viewModel.getBatchId());
+		dataModel.setCustomerId(viewModel.getCustomerId());
+		dataModel.setTransactionType(viewModel.getTransactionType());
+		dataModel.setAmount(viewModel.getAmount());
+		dataModel.setTransactionDate(viewModel.getTransactionDate());
+		
 	}
 
 }
