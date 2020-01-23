@@ -61,6 +61,12 @@ public class CustomerLedgerView {
 		this.amount = amount;
 		this.transactionDate = transactionDate;
 	}
+	@Override
+	public String toString() {
+		return "CustomerLedgerView [transactionId=" + transactionId + ", batchId=" + batchId + ", customerId="
+				+ customerId + ", transactionType=" + transactionType + ", amount=" + amount + ", transactionDate="
+				+ transactionDate + "]";
+	}
 	
 	
 }

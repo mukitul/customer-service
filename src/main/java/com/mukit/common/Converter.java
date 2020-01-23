@@ -34,12 +34,12 @@ public class Converter {
 
 	public static void viewToDataModelConverterForLedger(CustomerLedgerView viewModel,
 			CustomerLedgerData dataModel) {
-		dataModel.setTransactionId(viewModel.getTransactionId());
-		dataModel.setBatchId(viewModel.getBatchId());
-		dataModel.setCustomerId(viewModel.getCustomerId());
-		dataModel.setTransactionType(viewModel.getTransactionType());
-		dataModel.setAmount(viewModel.getAmount());
-		dataModel.setTransactionDate(viewModel.getTransactionDate());
+		viewModel.setTransactionId(dataModel.getTransactionId());
+		viewModel.setBatchId(dataModel.getBatchId());
+		viewModel.setCustomerId(dataModel.getCustomerId());
+		viewModel.setTransactionType(dataModel.getTransactionType());
+		viewModel.setAmount(dataModel.getAmount());
+		viewModel.setTransactionDate(dataModel.getTransactionDate());
 		
 	}
 

@@ -26,6 +26,20 @@ public class CustomerLedgerServiceImplementation {
 			return false;
 		}
 	}
+	
+	public CustomerLedgerView findByCustomerId(Integer cId) {
+		CustomerLedgerView customerLedgerView = new CustomerLedgerView();
+		try {
+			CustomerLedgerData data = customerLedgerRepository.findByCustomerId(cId);
+			Converter.viewToDataModelConverterForLedger(customerLedgerView, data);
+			System.out.println(customerLedgerView.toString());
+		
+		} catch (Exception e) {
+			
+		}
+		
+		return customerLedgerView;
+	}
 
 	public List<CustomerLedgerView> findAll() {
 		// TODO Auto-generated method stub
