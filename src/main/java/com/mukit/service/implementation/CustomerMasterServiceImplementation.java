@@ -41,5 +41,29 @@ public class CustomerMasterServiceImplementation {
 		return customerMasterList;
 
 	}
+	
+	public CustomerMasterView findCustomerById(Integer customerId) {
+		CustomerMasterView customerMaster = new CustomerMasterView();
+		try {
+			CustomerMasterData data = customerMasterRepository.getOne(customerId);
+			Converter.dataToViewModelConverter(customerMaster, data);
+
+		} catch (Exception e) {
+
+		}
+		return customerMaster;
+
+	}
+
+	public Double getCustomerMasterAmountById(Integer customerId) {
+		Double data = null;
+		try {
+			data = customerMasterRepository.findMasterAmountByCustomerId(customerId);
+		} catch (Exception e) {
+
+		}
+
+		return data;
+	}
 
 }
