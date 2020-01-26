@@ -13,6 +13,7 @@ import com.mukit.service.implementation.CustomerMasterServiceImplementation;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
+
 public class CustomerMasterTests {
 
 	/*
@@ -32,7 +33,7 @@ public class CustomerMasterTests {
 	public void save() {
 		boolean saveResult = customerMasterServiceImplementation.save(new CustomerMasterView(1, 1, 5000.0, 1212L));
 		System.out.println("TEST-------: "+saveResult);
-		assertEquals("Passed", false, saveResult);
+		assertEquals("Passed", true, saveResult);
 	}
 
 }
