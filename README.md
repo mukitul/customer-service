@@ -36,7 +36,7 @@ Above commands will create a jar file in Target folder of application.
 
 #### Run Spring Boot app
 ```
-java -jar Target/application-name-0.0.1-SNAPSHOT.jar
+java -jar Target/customer-service-0.0.1-SNAPSHOT.jar
 ```
 
-* Visit your app at [http://localhost:8084](http://localhost:4200).
+* Visit your app at [http://localhost:8084](http://localhost:8084).
