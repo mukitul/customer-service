@@ -5,6 +5,7 @@ A short introduction of this app could easily go here.
 ## Prerequisites
 
 You will need the following things properly installed on your computer.
+* [Docker]()
 * [Git](https://git-scm.com/)
 * [Maven]()
 * [STS/Eclipse/VSCode]()
