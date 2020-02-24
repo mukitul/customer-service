@@ -1,0 +1,49 @@
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  labels:
+    app: customer-service
+  name: customer-service
+  namespace: demo
+spec:
+  replicas: 1
+  selector:
+    app: customer-service
+    deploymentconfig: customer-service
+  strategy:
+    activeDeadlineSeconds: 21600
+    resources: {}
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: customer-service
+        deploymentconfig: customer-service
+      
+    spec:
+      containers:
+        - image: docker-registry.default.svc:5000/demo/customer
+          imagePullPolicy: Always
+          name: customer-service
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+      
+  triggers:
+    - type: ConfigChange
+
+    - imageChangeParams:
+        automatic: true
+        containerNames:
+          - customer-service
+        from:
+          kind: ImageStreamTag
+          name: customer:latest
+          namespace: demo
+      type: ImageChange
+
