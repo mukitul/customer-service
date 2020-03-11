@@ -1,0 +1,26 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  labels:
+    build: customer-build
+  name: customer-build
+  namespace: demo
+spec:
+  failedBuildsHistoryLimit:
+  nodeSelector: null
+  output:
+    to:
+      kind: ImageStreamTag
+      name: 'customer:latest'
+  postCommit: {}
+  resources: {}
+  runPolicy: Serial
+  source:
+    type: Binary
+  strategy:
+    dockerStrategy:
+      from:
+        kind: ImageStreamTag
+        name: 'openjdk:8-jdk-alpine'
+    type: Docker
+
