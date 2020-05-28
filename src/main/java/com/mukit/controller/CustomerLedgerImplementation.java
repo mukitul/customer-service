@@ -1,4 +1,4 @@
-package com.mukit.controller.implementation;
+package com.mukit.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,16 +19,16 @@ import com.mukit.common.response.get.GetRequestResponseBody;
 import com.mukit.common.response.get.GetRequestResponseEntity;
 import com.mukit.common.response.get.GetRequestResponseEntityForList;
 import com.mukit.model.view.CustomerLedgerView;
-import com.mukit.service.implementation.CustomerLedgerServiceImplementation;
+import com.mukit.service.CustomerLedgerServiceImplementation;
 
 @CrossOrigin
 @RestController
 @RequestMapping("customerledger")
 public class CustomerLedgerImplementation {
-	
+
 	@Autowired
 	CustomerLedgerServiceImplementation customerLedgerServiceImplementation;
-	
+
 	@PostMapping
 	public ResponseEntity<?> addLedger(@RequestBody PostRequestEntity<CustomerLedgerView> postRequestEntity) {
 
@@ -43,24 +43,25 @@ public class CustomerLedgerImplementation {
 		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 
 	}
-	
+
 	@GetMapping("/customerId/{customerId}")
 	public ResponseEntity<?> findByCustomerId(@PathVariable("customerId") Integer cId) {
 		GetRequestResponseEntity<CustomerLedgerView, Integer> responseObject = new GetRequestResponseEntity<CustomerLedgerView, Integer>();
 		CustomerLedgerView customerLedger = customerLedgerServiceImplementation.findByCustomerId(cId);
 		if (customerLedger != null) {
 			GetRequestResponseBody<CustomerLedgerView, Integer> responseBody = new GetRequestResponseBody<CustomerLedgerView, Integer>();
-			responseBody.id=customerLedger.getTransactionId();
-			responseBody.type="customerledger";
+			responseBody.id = customerLedger.getTransactionId();
+			responseBody.type = "customerledger";
 			responseBody.attributes = customerLedger;
-			
+
 			responseObject.data = responseBody;
-			return new ResponseEntity<GetRequestResponseEntity<CustomerLedgerView, Integer>>(responseObject, HttpStatus.OK);
+			return new ResponseEntity<GetRequestResponseEntity<CustomerLedgerView, Integer>>(responseObject,
+					HttpStatus.OK);
 		}
-		
+
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
-	
+
 	@GetMapping
 	public ResponseEntity<?> findAll() {
 		GetRequestResponseEntityForList<CustomerLedgerView, Integer> responseObject = new GetRequestResponseEntityForList<CustomerLedgerView, Integer>();
@@ -69,15 +70,16 @@ public class CustomerLedgerImplementation {
 			List<GetRequestResponseBody<CustomerLedgerView, Integer>> responseBody = new ArrayList<GetRequestResponseBody<CustomerLedgerView, Integer>>();
 			for (int i = 0; i < customerLedgerList.size(); i++) {
 				GetRequestResponseBody<CustomerLedgerView, Integer> getRequestResponseBody = new GetRequestResponseBody<CustomerLedgerView, Integer>();
-				getRequestResponseBody.id=customerLedgerList.get(i).getTransactionId();
-				getRequestResponseBody.type="customermaster";
+				getRequestResponseBody.id = customerLedgerList.get(i).getTransactionId();
+				getRequestResponseBody.type = "customermaster";
 				getRequestResponseBody.attributes = customerLedgerList.get(i);
 				responseBody.add(getRequestResponseBody);
 			}
 			responseObject.data = responseBody;
-			return new ResponseEntity<GetRequestResponseEntityForList<CustomerLedgerView, Integer>>(responseObject, HttpStatus.OK);
+			return new ResponseEntity<GetRequestResponseEntityForList<CustomerLedgerView, Integer>>(responseObject,
+					HttpStatus.OK);
 		}
-		
+
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 }

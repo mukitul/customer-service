@@ -9,7 +9,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.mukit.model.view.CustomerMasterView;
-import com.mukit.service.implementation.CustomerMasterServiceImplementation;
+import com.mukit.service.CustomerMasterServiceImplementation;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest

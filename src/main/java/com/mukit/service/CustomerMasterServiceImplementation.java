@@ -1,4 +1,4 @@
-package com.mukit.service.implementation;
+package com.mukit.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,10 +6,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.mukit.common.Converter;
 import com.mukit.model.data.CustomerMasterData;
 import com.mukit.model.view.CustomerMasterView;
 import com.mukit.repository.CustomerMasterRepository;
-import com.mukit.common.Converter;
 
 @Service
 public class CustomerMasterServiceImplementation {
@@ -41,7 +41,7 @@ public class CustomerMasterServiceImplementation {
 		return customerMasterList;
 
 	}
-	
+
 	public CustomerMasterView findCustomerById(Integer customerId) {
 		CustomerMasterView customerMaster = new CustomerMasterView();
 		try {

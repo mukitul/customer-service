@@ -1,4 +1,4 @@
-package com.mukit.controller.implementation;
+package com.mukit.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,14 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
 import com.mukit.common.request.post.PostRequestEntity;
 import com.mukit.common.response.get.GetRequestResponseBody;
 import com.mukit.common.response.get.GetRequestResponseEntityForList;
-import com.mukit.controller.interfaces.CustomerMaster;
 import com.mukit.model.view.CustomerMasterView;
-import com.mukit.service.implementation.CustomerMasterServiceImplementation;
+import com.mukit.service.CustomerMasterServiceImplementation;
 
 @CrossOrigin
 @RestController
 @RequestMapping("customermaster")
-public class CustomerMasterImplementation implements CustomerMaster {
+public class CustomerMasterImplementation {
 	@Autowired
 	CustomerMasterServiceImplementation customerMasterServiceImplementation;
 
@@ -50,15 +49,16 @@ public class CustomerMasterImplementation implements CustomerMaster {
 			List<GetRequestResponseBody<CustomerMasterView, Integer>> responseBody = new ArrayList<GetRequestResponseBody<CustomerMasterView, Integer>>();
 			for (int i = 0; i < customerMasterList.size(); i++) {
 				GetRequestResponseBody<CustomerMasterView, Integer> getRequestResponseBody = new GetRequestResponseBody<CustomerMasterView, Integer>();
-				getRequestResponseBody.id=customerMasterList.get(i).getId();
-				getRequestResponseBody.type="customermaster";
+				getRequestResponseBody.id = customerMasterList.get(i).getId();
+				getRequestResponseBody.type = "customermaster";
 				getRequestResponseBody.attributes = customerMasterList.get(i);
 				responseBody.add(getRequestResponseBody);
 			}
 			responseObject.data = responseBody;
-			return new ResponseEntity<GetRequestResponseEntityForList<CustomerMasterView, Integer>>(responseObject, HttpStatus.OK);
+			return new ResponseEntity<GetRequestResponseEntityForList<CustomerMasterView, Integer>>(responseObject,
+					HttpStatus.OK);
 		}
-		
+
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 }

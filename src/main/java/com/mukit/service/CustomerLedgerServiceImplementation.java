@@ -1,4 +1,4 @@
-package com.mukit.service.implementation;
+package com.mukit.service;
 
 import java.util.List;
 
@@ -22,12 +22,12 @@ public class CustomerLedgerServiceImplementation {
 
 	public boolean save(CustomerLedgerView customerLedgerView) {
 		CustomerLedgerData customerLedgerData = new CustomerLedgerData();
-		
+
 		Integer customerId = customerLedgerView.getCustomerId();
 		String transactionType = customerLedgerView.getTransactionType();
-		
+
 		CustomerMasterView customerMaster = customerMasterServiceImplementation.findCustomerById(customerId);
-		
+
 		Double ledgerAmount = customerLedgerView.getAmount();
 		Double masterAmount = customerMaster.getAmount();
 
@@ -44,12 +44,12 @@ public class CustomerLedgerServiceImplementation {
 				customerMaster.setAmount(masterAmount + ledgerAmount);
 				System.out.println(customerLedgerView.toString());
 			}
-			
+
 			Converter.viewToDataModelConverterForLedger(customerLedgerView, customerLedgerData);
 			customerLedgerRepository.save(customerLedgerData);
-			
+
 			customerMasterServiceImplementation.save(customerMaster);
-			
+
 			return true;
 		} catch (Exception e) {
 			return false;
