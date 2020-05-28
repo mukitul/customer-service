@@ -9,8 +9,10 @@ You will need the following things properly installed on your computer.
 * [Git](https://git-scm.com/)
 * [Maven]()
 * [STS/Eclipse/VSCode]()
+* [JDK 7/8]()
 * [Google Chrome](https://google.com/chrome/)
 * [Postman]()
+* [MySQL]()
 
 ## Get This Project
 
@@ -19,18 +21,12 @@ You will need the following things properly installed on your computer.
 
 ## Running / Development
 #### Maven build with test cases
-```
-mvn install
-```
+`mvn install`
 or
-```
-mvn clean install
-```
+`mvn clean install`
 
 #### Maven build skipping test cases
-```
-mvn install -DskipTests
-```
+`mvn install -DskipTests`
 
 #### What Above commands does?
 Above commands will create a jar file in Target folder of application.
