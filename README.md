@@ -14,34 +14,21 @@ You will need the following things properly installed on your computer.
 * [Postman]()
 * [MySQL]()
 
-## Get This Project
+## Get And Run This Project
 
-* `git clone <repository-url>` this repository
+* `git clone https://github.com/mukitul/customer-service.git`
 * `cd customer-service`
+* `mvn install` or `mvn clean install` or  `mvn install -DskipTests`
+* `docker-compose up --build -d`
+* Visit your app at [http://localhost:8084](http://localhost:8084) from browser.
+* Explore endpoints using `Postman`.
+* For stop all services: `docker-compose down`
 
 ## Endpoint Description
+
 | SL 	| Endpoint                                    	| Request Type 	| Data Format in Request Body                                                                                                                                                                                                                        	|
 |----	|---------------------------------------------	|--------------	|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------	|
 | 1  	| host/customermaster                         	| POST         	|  ``` { 	     "data":{ 		       "type":"customer", 		       "attributes":{ 			         "id": 1, 			         "customerId": 1, 			         "amount": 100.20, 			         "lastTransactionDate": 100 		       } 	     } } ```                                              	|
 | 2  	| host/customermaster                         	| GET          	| ``` X ```                                                                                                                                                                                                                                          	|
 | 3  	| host/customerledger                         	| POST         	| ``` { 	 "data":{ 		     "type":"ledger", 		     "attributes":{ 			       "transactionId": 1, 			       "batchId": 1, 			       "customerId": 1, 			       "transactionType": "credit", 			       "amount": 200000.20, 			       "transactionDate": 201 		     } 	   } }  ``` 	|
 | 4  	| host/customerledger/customerId/{customerId} 	| GET          	| ``` X ```                                                                                                                                                                                                                                          	|
-
-## Running / Development
-#### Maven build with test cases
-`mvn install`
-or
-`mvn clean install`
-
-#### Maven build skipping test cases
-`mvn install -DskipTests`
-
-#### What Above commands does?
-Above commands will create a jar file in Target folder of application.
-
-#### Run Spring Boot app
-```
-java -jar Target/customer-service-0.0.1-SNAPSHOT.jar
-```
-
-* Visit your app at [http://localhost:8084](http://localhost:8084).
