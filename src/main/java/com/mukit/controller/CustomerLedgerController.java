@@ -19,15 +19,15 @@ import com.mukit.common.response.get.GetRequestResponseBody;
 import com.mukit.common.response.get.GetRequestResponseEntity;
 import com.mukit.common.response.get.GetRequestResponseEntityForList;
 import com.mukit.model.view.CustomerLedgerView;
-import com.mukit.service.CustomerLedgerServiceImplementation;
+import com.mukit.service.CustomerLedgerService;
 
 @CrossOrigin
 @RestController
 @RequestMapping("customerledger")
-public class CustomerLedgerImplementation {
+public class CustomerLedgerController {
 
 	@Autowired
-	CustomerLedgerServiceImplementation customerLedgerServiceImplementation;
+	CustomerLedgerService customerLedgerServiceImplementation;
 
 	@PostMapping
 	public ResponseEntity<?> addLedger(@RequestBody PostRequestEntity<CustomerLedgerView> postRequestEntity) {

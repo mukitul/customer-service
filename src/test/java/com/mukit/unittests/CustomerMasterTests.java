@@ -9,7 +9,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.mukit.model.view.CustomerMasterView;
-import com.mukit.service.CustomerMasterServiceImplementation;
+import com.mukit.service.CustomerMasterService;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
@@ -21,7 +21,7 @@ public class CustomerMasterTests {
 	 */
 	
 	@Autowired
-	private CustomerMasterServiceImplementation customerMasterServiceImplementation;
+	private CustomerMasterService customerMasterServiceImplementation;
 	
 	/*
 	 * @Before public void setUp() { customerMasterRepository.save(new

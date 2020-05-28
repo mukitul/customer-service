@@ -12,13 +12,13 @@ import com.mukit.model.view.CustomerMasterView;
 import com.mukit.repository.CustomerLedgerRepository;
 
 @Service
-public class CustomerLedgerServiceImplementation {
+public class CustomerLedgerService {
 
 	@Autowired
 	private CustomerLedgerRepository customerLedgerRepository;
 
 	@Autowired
-	private CustomerMasterServiceImplementation customerMasterServiceImplementation;
+	private CustomerMasterService customerMasterServiceImplementation;
 
 	public boolean save(CustomerLedgerView customerLedgerView) {
 		CustomerLedgerData customerLedgerData = new CustomerLedgerData();

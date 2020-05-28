@@ -12,7 +12,7 @@ import com.mukit.model.view.CustomerMasterView;
 import com.mukit.repository.CustomerMasterRepository;
 
 @Service
-public class CustomerMasterServiceImplementation {
+public class CustomerMasterService {
 
 	@Autowired
 	private CustomerMasterRepository customerMasterRepository;

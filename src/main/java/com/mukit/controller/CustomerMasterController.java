@@ -17,14 +17,14 @@ import com.mukit.common.request.post.PostRequestEntity;
 import com.mukit.common.response.get.GetRequestResponseBody;
 import com.mukit.common.response.get.GetRequestResponseEntityForList;
 import com.mukit.model.view.CustomerMasterView;
-import com.mukit.service.CustomerMasterServiceImplementation;
+import com.mukit.service.CustomerMasterService;
 
 @CrossOrigin
 @RestController
 @RequestMapping("customermaster")
-public class CustomerMasterImplementation {
+public class CustomerMasterController {
 	@Autowired
-	CustomerMasterServiceImplementation customerMasterServiceImplementation;
+	CustomerMasterService customerMasterServiceImplementation;
 
 	@PostMapping
 	public ResponseEntity<?> addCustomer(@RequestBody PostRequestEntity<CustomerMasterView> postRequestEntity) {
